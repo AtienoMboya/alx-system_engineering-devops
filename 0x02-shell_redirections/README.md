@@ -4,3 +4,5 @@
 	Displays a confused smile
 2-hellofile
 	displays contents of /etc/passwd
+3-twofiles
+	Displays contents of /etc/passwd and /etc/hosts

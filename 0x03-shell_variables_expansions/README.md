@@ -6,3 +6,5 @@
 	adds action to path
 3-paths
 	counts number of directories in PATH
+4-global_variables
+	lists all global variables

@@ -20,3 +20,5 @@
 	divides the variable power by divide
 10-love_exponent_breath
 	breath to the power of love
+11-binary_to_decimal
+	converts a number from base 2 to base 10.

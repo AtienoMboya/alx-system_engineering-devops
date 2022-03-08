@@ -8,3 +8,5 @@
 	counts number of directories in PATH
 4-global_variables
 	lists all global variables
+5-local_variables
+	lists all local variables and environment variables and functions

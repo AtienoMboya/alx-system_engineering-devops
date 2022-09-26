@@ -3,10 +3,10 @@
 #+	Enables management via the init script
 #+	Distributes requests using round-robin algorithm
 
-apt-get update
-apt-get-y install --no-install-recommends software-properties-common
-add-apt-repository ppa:vbernat/haproxy-2.6
-apt-get -y install haproxy=2.6.\*
+sudo apt-get update
+sudo apt-get-y install --no-install-recommends software-properties-common
+sudo add-apt-repository ppa:vbernat/haproxy-2.6
+sudo apt-get -y install haproxy=2.6.\*
 
 # load balancer's config
 DOMAIN_NAME='atieno.tech'

@@ -8,7 +8,7 @@ sudo apt-get-y install --no-install-recommends software-properties-common
 sudo add-apt-repository ppa:vbernat/haproxy-2.6
 sudo apt-get -y install haproxy=2.6.\*
 
-# load balancer's config
+# the load balancer's configuration
 DOMAIN_NAME='atieno.tech'
 INIT_FILE='/etc/default/haproxy'
 CONFIG_FILE='/etc/haproxy/haproxy.cfg'
@@ -16,11 +16,11 @@ HAPROXY_LB_CONFIG=\
 "
 #--$DOMAIN_NAME-params-begin--
 backend $DOMAIN_NAME-backend
-        balance roundrobin
+	balance roundrobin
 	server 28430-web-01 3.236.237.165:80 check
 	server 28430-web-02 44.210.105.35:80 check
 frontend $DOMAIN_NAME-frontend
-        bind *:80
+	bind *:80
 	mode http
 	default_backend $DOMAIN_NAME-backend
 #--$DOMAIN_NAME-params-end--
@@ -41,9 +41,9 @@ if [ "$CONFIG_WORDS" -eq 0 ]; then
 	echo -e "$HAPROXY_LB_CONFIG" >> $CONFIG_FILE
 else
 	start_tkn="#--$DOMAIN_NAME-params-begin--"
-        end_tkn="#--$DOMAIN_NAME-params-end--"
+	end_tkn="#--$DOMAIN_NAME-params-end--"
 	a=$(grep -onE "$start_tkn" < "$CONFIG_FILE" | cut -d : -f1)
-	b=$(grep -onE "$end_tkn" < "$CONFIG_FILE" | cut -d : -fi)
+	b=$(grep -onE "$end_tkn" < "$CONFIG_FILE" | cut -d : -f1)
 	a=$((a - 1))
 	b=$((b + 1))
 	sed -i "$a,$b"d "$CONFIG_FILE"

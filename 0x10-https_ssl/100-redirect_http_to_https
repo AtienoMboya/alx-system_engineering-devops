@@ -33,21 +33,18 @@ defaults
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
 
-#--atieno.tech-params-begin--
 backend atieno.tech-backend
         balance roundrobin
-        redirect scheme https if !{ ssl_fc }
         server 28430-web-01 3.236.237.165:80 check
         server 28430-web-02 44.210.105.35:80 check
 
-frontend atieno.tech-http-frontend
-        bind *:80
-        http-request set-header X-Forwarded-Proto http
-        default_backend atieno.tech-backend
-        redirect scheme https code 301 if !{ ssl_fc }
-
 frontend atieno.tech-https-frontend
-        bind *:443 ssl crt /etc/letsencrypt/live/www.atieno.tech/fullchain.pem
+        bind 0.0.0.0:443 ssl crt /etc/haproxy/certs/www.atieno.tech.pem
         http-request set-header X-Forwarded-Proto https
         default_backend atieno.tech-backend
-#--atieno.tech-params-end--
+
+frontend atieno.tech-http-frontend
+        bind 0.0.0.0:80
+        redirect scheme https code 301 if !{ ssl_fc }
+        http-request set-header X-Forwarded-Proto http
+        default_backend atieno.tech-backend

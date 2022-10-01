@@ -20,7 +20,7 @@ backend $DOMAIN_NAME-backend
 	server 28430-web-01 3.236.237.165:80 check
 	server 28430-web-02 44.210.105.35:80 check
 frontend $DOMAIN_NAME-frontend
-	bind *:80
+	bind 0.0.0.0:80
 	mode http
 	default_backend $DOMAIN_NAME-backend
 #--$DOMAIN_NAME-params-end--

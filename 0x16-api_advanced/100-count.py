@@ -12,8 +12,7 @@ def count_words(subreddit, word_list, found_list=[], after=None):
         after (str): The parameter for the next page of the API results.
     '''
     user_agent = {'User-Agent': "linux: 0x16.api.advanced: v1.0.0\
-            (by u/Charming-Zebra4864)"
-            }
+            (by u/Charming-Zebra4864)"}
     posts = requests.get('http://www.reddit.com/r/{}/hot.json?after={}'
                          .format(subreddit, after), headers=user_agent)
     if after is None:

@@ -1,6 +1,5 @@
-# Fixes bad php extensions
-
-exec { 'fix-wordpress':
-  command => 'sed -i s/phpp/php/g /var/ww/html/wp-settings.php',
-  path    => '/usr/local/bin/:/bin/'
+# this manifest corrects the php file extension in the WP settings file                                                                                                                         
+exec {'fix file extension':                                                                                                                                                                     
+  path    => ['/usr/bin', '/usr/local/bin', '/bin', '/usr/sbin'],                                                                                                                               
+  command => "sed -i 's/phpp/php/g' /var/www/html/wp-settings.php"                                                                                                                              
 }
